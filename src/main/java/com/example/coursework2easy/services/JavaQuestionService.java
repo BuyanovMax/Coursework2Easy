@@ -1,5 +1,7 @@
-package com.example.coursework2easy;
+package com.example.coursework2easy.services;
 
+import com.example.coursework2easy.model.Question;
+import com.example.coursework2easy.QuestionService;
 import com.example.coursework2easy.exceptions.QuestionNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-
     Set<Question> questions = new HashSet<>();
     Random random = new Random();
 
@@ -22,8 +23,14 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public Question add(Question question) {
-        return null;
+    public Question find(Question question) {
+        if (questions.contains(question)) {
+            return question;
+        } else {
+            throw new QuestionNotFoundException("Вопрос не найден");
+        }
+
+
     }
 
     @Override
@@ -37,12 +44,12 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Collection<Question> getAll() {
-        return questions.stream().collect(Collectors.toList());
+        return new ArrayList<>(questions);
     }
 
     @Override
     public Question getRandomQuestion() {
-       List<Question> list =  questions.stream().collect(Collectors.toList());
+       List<Question> list =  questions.stream().toList();
         int a = random.nextInt(0, questions.size());
         return list.get(a);
     }

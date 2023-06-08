@@ -1,4 +1,4 @@
-package com.example.coursework2easy;
+package com.example.coursework2easy.model;
 
 import java.util.Objects;
 

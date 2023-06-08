@@ -1,5 +1,8 @@
-package com.example.coursework2easy;
+package com.example.coursework2easy.services;
 
+import com.example.coursework2easy.ExaminerService;
+import com.example.coursework2easy.model.Question;
+import com.example.coursework2easy.QuestionService;
 import com.example.coursework2easy.exceptions.ChooseFewerQuestionsException;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +34,6 @@ public class ExaminerServiceImpl implements ExaminerService {
 //                set.add(question);
 //            }
 //        }
-
         int ii = 0;
         while (ii < amount) {
             Question question = questionService.getRandomQuestion();
@@ -40,8 +42,6 @@ public class ExaminerServiceImpl implements ExaminerService {
                 ii += 1;
             }
         }
-
-
 
         return set;
 

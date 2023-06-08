@@ -1,7 +1,10 @@
-package com.example.coursework2easy;
+package com.example.coursework2easy.controllers;
 
+import com.example.coursework2easy.ExaminerService;
+import com.example.coursework2easy.model.Question;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -17,7 +20,7 @@ public class ExamController {
     }
 
     @GetMapping(path = "/getQuestions")
-    Collection<Question> getQuestions(int amount) {
+    Collection<Question> getQuestions(@RequestParam("amount")int amount) {
         return examinerService.getQuestions(amount);
     }
 
